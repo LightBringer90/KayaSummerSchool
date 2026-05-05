@@ -1,5 +1,7 @@
 # Kaya Summer School
 
+> Kids Playground
+
 Bilingual (RO / EN) Next.js site promoting events for children with disabilities and single-parent families. Includes:
 
 - Events listing + registration form
