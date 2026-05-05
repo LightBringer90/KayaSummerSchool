@@ -1,0 +1,25 @@
+services:
+  web:
+    ports: !override
+      - "8080:3000"
+    environment:
+      - NODE_ENV=production
+      - HOST=0.0.0.0
+      - PORT=3000
+      - NEXT_TELEMETRY_DISABLED=1
+    command:
+      - sh
+      - -c
+      - |
+        set -e
+        if [ ! -d .next ]; then
+          npm run build
+        fi
+        npm run start
+    healthcheck:
+      test: ["CMD", "wget", "-qO-", "http://127.0.0.1:3000/ro"]
+      interval: 10s
+      timeout: 5s
+      retries: 30
+      start_period: 120s
+    restart: unless-stopped
