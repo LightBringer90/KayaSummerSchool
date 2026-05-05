@@ -1,0 +1,24 @@
+services:
+  web:
+    build: ./web
+    image: kids-events-web:dev
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=development
+    healthcheck:
+      test: ["CMD", "wget", "-qO-", "http://127.0.0.1:3000/ro"]
+      interval: 5s
+      timeout: 5s
+      retries: 30
+      start_period: 30s
+
+  smoke:
+    build: ./tests
+    image: kids-events-smoke:dev
+    profiles: ["smoke"]
+    depends_on:
+      web:
+        condition: service_healthy
+    environment:
+      - BASE_URL=http://web:3000

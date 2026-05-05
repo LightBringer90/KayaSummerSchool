@@ -1,0 +1,126 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+}
+
+html, body {
+  background-color: #fffaf3;
+  color: #1a2231;
+}
+
+body {
+  @apply antialiased font-sans;
+}
+
+.section-orange { @apply bg-brand-50 border-y border-brand-200; }
+.section-blue   { @apply bg-sky-50   border-y border-sky-200; }
+.section-green  { @apply bg-leaf-50  border-y border-leaf-200; }
+.section-cream  { @apply bg-[#fffaf3] border-y border-brand-200; }
+
+.chip-orange { @apply inline-flex items-center rounded-full bg-brand-100 text-brand-700 text-xs font-semibold uppercase tracking-eyebrow px-3 py-1; }
+.chip-blue   { @apply inline-flex items-center rounded-full bg-sky-100   text-sky-700   text-xs font-semibold uppercase tracking-eyebrow px-3 py-1; }
+.chip-green  { @apply inline-flex items-center rounded-full bg-leaf-100  text-leaf-700  text-xs font-semibold uppercase tracking-eyebrow px-3 py-1; }
+
+a {
+  @apply transition-colors;
+}
+
+h1, h2, h3 {
+  letter-spacing: -0.01em;
+}
+
+.eyebrow {
+  @apply uppercase tracking-eyebrow text-xs font-medium;
+}
+
+.btn {
+  @apply inline-flex items-center justify-center rounded-md px-5 py-2.5 text-sm font-medium transition-colors;
+}
+.btn-primary {
+  @apply btn bg-brand-500 text-white hover:bg-brand-600;
+}
+.btn-secondary {
+  @apply btn bg-sky-600 text-white hover:bg-sky-700;
+}
+.btn-tertiary {
+  @apply btn bg-leaf-600 text-white hover:bg-leaf-700;
+}
+.btn-outline {
+  @apply btn border border-brand-500 text-brand-700 hover:bg-brand-100;
+}
+.btn-outline-blue {
+  @apply btn border border-sky-500 text-sky-700 hover:bg-sky-100;
+}
+.btn-outline-green {
+  @apply btn border border-leaf-500 text-leaf-700 hover:bg-leaf-100;
+}
+.link-quiet {
+  @apply text-slate-700 hover:text-slate-950;
+}
+
+.card {
+  @apply bg-white border border-slate-200;
+}
+
+.divider {
+  @apply h-px w-full bg-slate-200;
+}
+
+@keyframes jump {
+  0%   { transform: translateY(0)     scaleY(1); }
+  20%  { transform: translateY(0)     scaleY(0.85) scaleX(1.1); }
+  50%  { transform: translateY(-60px) scaleY(1.1)  scaleX(0.95); }
+  80%  { transform: translateY(0)     scaleY(0.9)  scaleX(1.05); }
+  100% { transform: translateY(0)     scaleY(1); }
+}
+@keyframes spin {
+  from { transform: rotate(0deg)   scale(1); }
+  50%  { transform: rotate(360deg) scale(1.2); }
+  to   { transform: rotate(720deg) scale(1); }
+}
+@keyframes shake {
+  0%, 100% { transform: translateX(0)     rotate(0); }
+  20%      { transform: translateX(-8px)  rotate(-8deg); }
+  40%      { transform: translateX(8px)   rotate(8deg); }
+  60%      { transform: translateX(-6px)  rotate(-6deg); }
+  80%      { transform: translateX(6px)   rotate(6deg); }
+}
+@keyframes fly {
+  0%   { transform: translate(0, 0)        rotate(0); }
+  25%  { transform: translate(-30px, -25px) rotate(-15deg); }
+  50%  { transform: translate(30px, -45px)  rotate(15deg); }
+  75%  { transform: translate(-15px, -20px) rotate(-10deg); }
+  100% { transform: translate(0, 0)        rotate(0); }
+}
+@keyframes hop {
+  0%, 100% { transform: translateY(0); }
+  25%      { transform: translateY(-30px); }
+  50%      { transform: translateY(0); }
+  75%      { transform: translateY(-15px); }
+}
+@keyframes twinkle {
+  0%, 100% { transform: scale(1)   rotate(0);    filter: drop-shadow(0 0 0 #f6c453); }
+  50%      { transform: scale(1.4) rotate(180deg); filter: drop-shadow(0 0 12px #ffd76b); }
+}
+@keyframes burst {
+  0%   { opacity: 0; transform: translate(0, 0)    scale(0.6); }
+  20%  { opacity: 1; }
+  100% { opacity: 0; transform: translate(0, -40px) scale(1.4); }
+}
+
+.anim-jump     { animation: jump     0.7s ease-in-out; }
+.anim-spin     { animation: spin     0.9s ease-in-out; }
+.anim-shake    { animation: shake    0.7s ease-in-out; }
+.anim-fly      { animation: fly      1.2s ease-in-out; }
+.anim-hop      { animation: hop      0.8s ease-in-out; }
+.anim-twinkle  { animation: twinkle  0.9s ease-in-out; }
+.anim-burst    { animation: burst    0.9s ease-out forwards; }
+
+@media (prefers-reduced-motion: reduce) {
+  .anim-jump, .anim-spin, .anim-shake, .anim-fly, .anim-hop, .anim-twinkle, .anim-burst {
+    animation: none !important;
+  }
+}
