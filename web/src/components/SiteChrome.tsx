@@ -27,6 +27,12 @@ export function Header({ locale }: { locale: Locale }) {
         </Link>
         <nav className="hidden md:flex items-center gap-7 text-sm">
           <Link
+            href={link("/program")}
+            className="text-slate-700 hover:text-brand-700 font-medium"
+          >
+            {t.program.navLabel}
+          </Link>
+          <Link
             href={link("/events")}
             className="text-slate-700 hover:text-sky-700 font-medium"
           >
@@ -88,6 +94,9 @@ export function Footer({ locale }: { locale: Locale }) {
           <p className="mt-4 text-sm text-slate-600 max-w-xs">{t.tagline}</p>
         </div>
         <FooterCol title={t.footer.colExplore}>
+          <Link href={link("/program")} className="link-quiet">
+            {t.program.navLabel}
+          </Link>
           <Link href={link("/events")} className="link-quiet">
             {t.nav.events}
           </Link>

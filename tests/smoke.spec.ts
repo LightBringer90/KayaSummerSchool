@@ -9,6 +9,7 @@ const paths = [
   "/register",
   "/play",
   "/unplug",
+  "/program",
 ];
 
 for (const locale of locales) {
@@ -151,6 +152,31 @@ test("unplug: pledge widget toggles and shows perfect message when all picked", 
 
   await page.getByTestId("pledge-reset").click();
   await expect(count).toHaveText("0");
+});
+
+test("program page: RO renders schedule, budget, total, and strategies", async ({
+  page,
+}) => {
+  await page.goto("/ro/program");
+  await expect(
+    page.getByRole("heading", { name: "Programul săptămânal" }),
+  ).toBeVisible();
+  await expect(page.getByText("Antrenament Sportiv")).toBeVisible();
+  await expect(page.getByText("Catering (Gustări)")).toBeVisible();
+  await expect(page.getByText("470 RON")).toBeVisible();
+  await expect(page.getByText("Regula Break-Even")).toBeVisible();
+});
+
+test("program page: EN renders schedule, budget, total, and strategies", async ({
+  page,
+}) => {
+  await page.goto("/en/program");
+  await expect(
+    page.getByRole("heading", { name: "Weekly schedule" }),
+  ).toBeVisible();
+  await expect(page.getByText("Sports training")).toBeVisible();
+  await expect(page.getByText("470 RON")).toBeVisible();
+  await expect(page.getByText("Break-even rule")).toBeVisible();
 });
 
 test("RO and EN headlines differ", async ({ page }) => {
